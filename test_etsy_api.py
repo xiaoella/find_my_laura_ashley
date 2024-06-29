@@ -1,3 +1,7 @@
+"""
+This script tests if your Etsy API key works
+"""
+
 import os
 import requests
 
