@@ -1,5 +1,6 @@
 ipykernel==6.29.4
 requests==2.32.3
-selenium==4.21.0
-webdriver-manager==4.0.1
-beautifulsoup4==4.12.3
+json==2.0.9
+scikit-learn==1.5.1
+matplotlib==3.9.1
+seaborn==0.13.2
