@@ -1,6 +1,6 @@
 .venv
 .env
-.pkl
+*.pkl
 image_data/
 etsy_data/
 __pycache__
