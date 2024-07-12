@@ -70,8 +70,7 @@ class EtsySearch:
             return False
 
 
-    def save_to_json(self, listings: Dict[str, Any], filename: str) -> str:
-        filepath = "data/raw/"+filename
+    def save_to_json(self, listings: Dict[str, Any], filepath: str) -> str:
         try:
             with open(filepath, 'w') as json_file:
                 json.dump(listings, json_file, indent=4)

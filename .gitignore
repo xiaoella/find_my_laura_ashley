@@ -1,4 +1,6 @@
 .venv
 .env
-data/
+.pkl
+image_data/
+etsy_data/
 __pycache__
