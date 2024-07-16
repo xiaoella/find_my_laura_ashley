@@ -15,10 +15,44 @@ To train the model, I gathered a dataset comprising two categories:
 
 - Label Images: These images featured the distinctive Laura Ashley logo from the 1980s. The logos were mostly clear and centred, making them ideal for model training.
 
-<img src="src/images/logos.png" alt="logos" width="300"/>
+<img src="src/images/logos.png" alt="logos" width="500"/>
 
 - Non-Label Images: These included a variety of Laura Ashley and Laura Ashley 'style' dress photos from Etsy listings. The images in this category did not contain the Laura Ashley logo and represented general product photography, capturing the typical noise and variability found in real-world data.
 
-<img src="src/images/dresses.png" alt="dresses" width="300"/>
+<img src="src/images/dresses.png" alt="dresses" width="500"/>
 
 I aimed to curate the dataset to closely mimic the type of images the model would encounter when deployed.
+
+## Fetching and Filtering Data from Etsy
+The 'get_data.py' script is designed to fetch, filter and save data from Etsy's API.
+
+### Features
+**Data Fetching:** Retrieves active listings from Etsy's API using specific keywords related to vintage Laura Ashley dresses.
+**Data Filtering:** Implements two levels of filtering:
+    - Level 1 Filtering: Filters listings based on title keywords, and creation timestamp.
+    - Level 2 Filtering: Further filters listings based on specific property values like clothing size.
+**Saving Data and Directory Management:** Saves the filtered listings along with their properties and associated images into JSON files, then automatically creates directories based on the current date to organise saved data and images.
+
+### Instructions to Run
+
+**To check if your API works, just run:**
+```
+python test_etsy_api.py
+```
+It will then display if your API key is working or not.
+
+**To fetch and save data (running the get_data script):**
+```
+python get_data.py
+```
+
+**Sample output:**
+```
+Data saved to etsy_data/raw/etsy_listings.json
+There are a total of 818 active listings from this search.
+There are 24 listings made it through after 1st level of filtering.
+Data saved to etsy_data/raw/filtered_listings_properties.json
+There are 6 listings made it through after 2nd level of filtering.
+Data saved to etsy_data/240717/listings.json
+All data saving has completed.
+```
