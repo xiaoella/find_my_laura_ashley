@@ -4,4 +4,5 @@
 .DS_Store
 image_data/
 etsy_data/
+superseded/
 __pycache__
