@@ -7,5 +7,18 @@ Finding a Laura Ashley dress that also fits perfectly is not easy. Since the bra
 
 This project aims to identify the perfect Laura Ashley dress by fetching data from Etsy's website via the Etsy API, and filtering the results based on the listings' descriptions including sizes and measurements. It also use a Random Forest Classifier model to try to recognise if any images of the listed item contains the Laura Ashley label showing its 1980s logo.
 
-### Classification Model
-I used a Random Forest classification model from scikit-learn, and trained it on a dataset that I have collected.
+## Classification Model
+In an effort to automate the identification of authentic Laura Ashley dresses from online listings, I trained a random forest model focusing on recognising the iconic Laura Ashley logo, particularly the one from the 1980s. This task is crucial because many sellers tend to upload close-up photos of the label, which serves as a key indicator of authenticity.
+
+### Data Collection and Preparation
+To train the model, I gathered a dataset comprising two categories:
+
+- Label Images: These images featured the distinctive Laura Ashley logo from the 1980s. The logos were mostly clear and centred, making them ideal for model training.
+
+![logos](src/images/logo.png)
+
+- Non-Label Images: These included a variety of Laura Ashley and Laura Ashley 'style' dress photos from Etsy listings. The images in this category did not contain the Laura Ashley logo and represented general product photography, capturing the typical noise and variability found in real-world data.
+
+![dresses](src/images/dresses.png)
+
+I aimed to curate the dataset to closely mimic the type of images the model would encounter when deployed.

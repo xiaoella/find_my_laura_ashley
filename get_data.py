@@ -31,7 +31,7 @@ def main():
         listings = search.get_listings(keywords=keywords, offset=offset)
         if "results" in listings:
             all_listings.extend(listings["results"])
-            offset += 100
+            offset += 100 # Etsy's maximum limit is to return 100 listings, therefore I'm using the offset param
             if len(all_listings) == listings["count"]:
                 break
         else:
@@ -50,11 +50,11 @@ def main():
     #----- Level 1 Filtering: by the time created and listing description -----
     with open("src/keywords.json", "r") as file:
         data = json.load(file)
-    
+
     must_have_word = data["must_have_word"]
     keywords = data["keywords"]
     bomb_words = data["bomb_words"]
-    
+
     filter1_listings = []
     timestamp = (datetime.now() - timedelta(days=7)).timestamp()
 
@@ -75,18 +75,18 @@ def main():
 
 
     #----- Level 2 Filtering: by the listing properties -----
-    filter1_properties = []
+    properties = []
 
     for listing in filter1_listings:
         response = search.get_listing_properties(listing["shop_id"], listing["listing_id"])
-        filter1_properties.append(response)
+        properties.append(response)
 
-    listings_properties = search.save_to_json(filter1_properties, "etsy_data/raw/filtered_listings_properties.json")
+    listings_properties = search.save_to_json(properties, "etsy_data/raw/filtered_listings_properties.json")
 
     with open(listings_properties) as file:
         filtered_data = json.load(file)
 
-    filter2_listings_index = []
+    filter2_index = []
 
     for idx, each_item in enumerate(filtered_data):
         for property in each_item["results"]:
@@ -94,10 +94,10 @@ def main():
                 if property["values"] in [['XS'], ['S'], ["36"]] or \
                         property["scale_name"] == "UK" and property["values"] in [['10'], ['8']] or \
                         property["scale_name"] == "US numeric" and property["values"] == ['6']:
-                    filter2_listings_index.append(idx)
+                    filter2_index.append(idx)
 
     # Cascading the level 2 filter results from the list of listings
-    filter2_listings = [filter1_listings[i] for i in filter2_listings_index]
+    filter2_listings = [filter1_listings[i] for i in filter2_index]
 
     print(f"There are {len(filter2_listings)} listings made it through after 2nd level of filtering.")
 
