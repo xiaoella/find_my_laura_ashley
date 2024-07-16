@@ -30,8 +30,10 @@ The 'get_data.py' script is designed to fetch, filter and save data from Etsy's 
 **Data Fetching:** Retrieves active listings from Etsy's API using specific keywords related to vintage Laura Ashley dresses.
 
 **Data Filtering:** Implements two levels of filtering:
-    - Level 1 Filtering: Filters listings based on title keywords, and creation timestamp.
-    - Level 2 Filtering: Further filters listings based on specific property values like clothing size.
+
+- Level 1 Filtering: Filters listings based on title keywords, and creation timestamp.
+
+- Level 2 Filtering: Further filters listings based on specific property values like clothing size.
 
 **Saving Data and Directory Management:** Saves the filtered listings along with their properties and associated images into JSON files, then automatically creates directories based on the current date to organise saved data and images.
 
