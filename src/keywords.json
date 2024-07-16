@@ -1,0 +1,13 @@
+{
+    "must_have_word": ["laura ashley"],
+    "keywords": [
+        "laura ashley", "uk 8", "uk 10", "size xs", "size s", "vintage 10",
+        "waist", "13", "26", "32", "66", "33",
+        "17 inches", "17\"", "cotton"
+    ],
+    "bomb_words": [
+        "uk 12", "12 uk", "uk 14", "14 uk", "uk 16", "16 uk",
+        "us 10", "10 us", " m ", " l ",
+        "like laura ashley", "laura ashley style", "handmade"
+    ]
+}
