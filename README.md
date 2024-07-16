@@ -15,10 +15,10 @@ To train the model, I gathered a dataset comprising two categories:
 
 - Label Images: These images featured the distinctive Laura Ashley logo from the 1980s. The logos were mostly clear and centred, making them ideal for model training.
 
-![logos](src/images/logo.png)
+<img src="src/images/logos.png" alt="logos" width="300"/>
 
 - Non-Label Images: These included a variety of Laura Ashley and Laura Ashley 'style' dress photos from Etsy listings. The images in this category did not contain the Laura Ashley logo and represented general product photography, capturing the typical noise and variability found in real-world data.
 
-![dresses](src/images/dresses.png)
+<img src="src/images/dresses.png" alt="dresses" width="300"/>
 
 I aimed to curate the dataset to closely mimic the type of images the model would encounter when deployed.
