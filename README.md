@@ -50,13 +50,20 @@ python get_data.py
 ```
 
 **Sample output:**
+
 `
 Data saved to etsy_data/raw/etsy_listings.json
+
 There are a total of 818 active listings from this search.
+
 There are 24 listings made it through after 1st level of filtering.
+
 Data saved to etsy_data/raw/filtered_listings_properties.json
+
 There are 6 listings made it through after 2nd level of filtering.
+
 Data saved to etsy_data/240717/listings.json
+
 All fetching and saving has completed.
 `
 
