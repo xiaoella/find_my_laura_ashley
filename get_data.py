@@ -63,7 +63,7 @@ def main():
 
     for idx, listing in enumerate(data["results"]):
         if search.check_contain_keywords(must_have_word, keywords, bomb_words, listing["title"], listing["description"]) and \
-                listing["who_made"] == "someone_else" and listing["created_timestamp"] > timestamp:
+                listing["who_made"] == "someone_else" and listing["created_timestamp"] >= timestamp:
             item = {
                 "listing_id": listing["listing_id"],
                 "shop_id": listing["shop_id"],
@@ -102,24 +102,25 @@ def main():
     print(f"There are {len(filter2_listings)} listings made it through after 2nd level of filtering.")
 
     #----- Saving Data to Local Directory -----
+    # Creating new directory at date of search
     folder_name = datetime.now().strftime("%y%m%d")
-    root_folder = make_directory(f"etsy_data/{folder_name}")
-    image_folder = make_directory(f"{root_folder}/images")
+    search_dir = make_directory(f"etsy_data/{folder_name}")
+    image_dir = make_directory(f"{search_dir}/images")
+    # Saving listings information
+    search.save_to_json(filter2_listings, f"{search_dir}/listings.json")
 
+    # Saving listings images
     listing_ids = [items["listing_id"] for items in filter2_listings]
 
     for listing_id in listing_ids:
-        directory = make_directory(f"{image_folder}/{listing_id}")
+        directory = make_directory(f"{image_dir}/{listing_id}")
         images = search.fetch_images(listing_id)
-
         image_urls = [image['url_570xN'] for image in images["results"]]
-
         for idx, url in enumerate(image_urls):
             file_path = os.path.join(directory, f"dress{idx}.jpg")
             urllib.request.urlretrieve(url, file_path)
 
-    search.save_to_json(filter2_listings, f"{root_folder}/listings.json")
-    print("All data saving has completed.")
+    print("All fetching and saving has completed.")
 
 if __name__ == "__main__":
     main()
