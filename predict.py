@@ -25,7 +25,7 @@ def process_img(img_path, target_size=(256, 256)):
 
 # Function to use the model and make predictions to listing images within a listing folder
 # And return "True" if any of the images in that folder has been predicted as a logo, else "False"
-def predict_listing(listing_folder):
+def predict_listing(listing_folder, model):
     predictions = []
     for img in os.listdir(listing_folder):
         if img.endswith("jpg"): # All images saved from previous step are .jpg files
@@ -37,38 +37,42 @@ def predict_listing(listing_folder):
     else:
         return False
 
+def main():
+    # Load the classification model
+    with open("src/logo_identifier.pkl", "rb") as file:
+        model = pickle.load(file)
 
-# Load the classification model
-with open("src/logo_identifier.pkl", "rb") as file:
-    model = pickle.load(file)
-
-# Set the root directory file path
-date = datetime.now().strftime("%y%m%d")
-root_dir = f"etsy_data/{date}"
-
-
-# Create a dictionary for saving the predictions
-predictions = {
-    "listing_id": [],
-    "prediction": []
-}
-
-# Make predictions and append to dictionary
-for folder in os.listdir(f"{root_dir}/images"):
-    if folder.isdigit():
-        # then it is a listing folder
-        listing_folder = os.path.join(root_dir, "images", folder)
-        predictions["listing_id"].append(int(folder))
-        predictions["prediction"].append(predict_listing(listing_folder))
+    # Set the root directory file path
+    date = datetime.now().strftime("%y%m%d")
+    root_dir = f"etsy_data/{date}"
 
 
-# Combine prediction results with listing details
-results = pd.DataFrame(predictions)
-data = pd.read_json(f"{root_dir}/listings.json")
+    # Create a dictionary for saving the predictions
+    predictions = {
+        "listing_id": [],
+        "prediction": []
+    }
 
-df = pd.merge(data, results, on="listing_id")
+    # Make predictions and append to dictionary
+    for folder in os.listdir(f"{root_dir}/images"):
+        if folder.isdigit():
+            # then it is a listing folder
+            listing_folder = os.path.join(root_dir, "images", folder)
+            predictions["listing_id"].append(int(folder))
+            predictions["prediction"].append(predict_listing(listing_folder, model))
 
-# Write data to CSV
-df.to_csv(f"etsy_data/{date}/results.csv", index=False)
 
-print(f"Listing data including prediction results saved.")
+    # Combine prediction results with listing details
+    results = pd.DataFrame(predictions)
+    data = pd.read_json(f"{root_dir}/listings.json")
+
+    df = pd.merge(data, results, on="listing_id")
+
+
+    # Write data to CSV
+    df.to_csv(f"etsy_data/{date}/results.csv", index=False)
+    print(f"Listing data including prediction results saved.")
+
+
+if __name__ == "__main__":
+    main()
