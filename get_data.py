@@ -67,7 +67,8 @@ def main():
             item = {
                 "listing_id": listing["listing_id"],
                 "shop_id": listing["shop_id"],
-                "title": listing["title"]
+                "title": listing["title"],
+                "url": listing["url"]
             }
             filter1_listings.append(item)
 
@@ -91,9 +92,9 @@ def main():
     for idx, each_item in enumerate(filtered_data):
         for property in each_item["results"]:
             if property["property_name"] == "Women's clothing size":
-                if property["values"] in [['XS'], ['S'], ["36"]] or \
-                        property["scale_name"] == "UK" and property["values"] in [['10'], ['8']] or \
-                        property["scale_name"] == "US numeric" and property["values"] == ['6']:
+                if property["values"] in [["XS"], ["S"], ["36"]] or \
+                        property["scale_name"] == "UK" and property["values"] in [["10"], ["8"]] or \
+                        property["scale_name"] == "US numeric" and property["values"] == ["6"]:
                     filter2_index.append(idx)
 
     # Cascading the level 2 filter results from the list of listings
@@ -115,7 +116,7 @@ def main():
     for listing_id in listing_ids:
         directory = make_directory(f"{image_dir}/{listing_id}")
         images = search.fetch_images(listing_id)
-        image_urls = [image['url_570xN'] for image in images["results"]]
+        image_urls = [image["url_570xN"] for image in images["results"]]
         for idx, url in enumerate(image_urls):
             file_path = os.path.join(directory, f"dress{idx}.jpg")
             urllib.request.urlretrieve(url, file_path)
