@@ -48,6 +48,7 @@ All fetching and saving operations have been completed successfully.
 ```
 
 ## 2. Making Predictions
+The `predict.py` script is designed to run a Random Forest Classifier model on the saved data from the previous step, identifying if any images contains the Laura Ashley logo.
 
 ### Classification Model
 Hoping to automate the identification of authentic Laura Ashley dresses from online listings as much as possible, I trained a random forest model focusing on recognising the iconic Laura Ashley logo, particularly the one from the 1980s. This task will be very helpful in the process, because many sellers tend to upload these close-up photos of the label, as they serve as a key indicator of authenticity.
