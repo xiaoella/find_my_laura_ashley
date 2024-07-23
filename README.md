@@ -71,4 +71,7 @@ I aimed to curate the dataset to closely mimic the type of images the model woul
 python predict.py
 ```
 
-This script will run the RF model on all images that belonged to each listing, and if the model predicted a logo within any of the images of one listing folder, then it will return 'True' for that listing, suggesting it thinks the listing is a True Laura Ashley dress as at least one of the images were detected with a logo. At the end of the script, it creates a new and final .csv file in preparation for the emailing. 
+This script will run the RF model on all images that belonged to each listing, and if the model predicted a logo within any of the images of one listing folder, then it will return 'True' for that listing, suggesting it thinks the listing is a True Laura Ashley dress as at least one of the images were detected with a logo.
+
+At the end of the script, it creates a new and final .csv file in preparation for the emailing, that looks something like this:
+<img src="src/images/prediction_results.png" alt="prediction_results"/>
