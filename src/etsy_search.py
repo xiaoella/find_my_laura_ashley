@@ -74,7 +74,7 @@ class EtsySearch:
         try:
             with open(filepath, 'w') as json_file:
                 json.dump(listings, json_file, indent=4)
-            print(f"Data saved to {filepath}")
+            print(f"- Data saved to {filepath}")
         except Exception as e:
             print(f"An error occurred while saving the file: {e}")
         return filepath

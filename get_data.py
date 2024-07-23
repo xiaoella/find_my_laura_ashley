@@ -25,6 +25,7 @@ def main():
     all_listings = []
     keywords = "vintage, laura, ashley, dress"
     offset = 0
+    print("1. Initial Data Extraction:")
 
     # Retrieve all listings
     while True:
@@ -38,13 +39,14 @@ def main():
             print("Failed to retrieve listings.")
             break
 
+    print(f"- Total active listings retrieved: {len(all_listings)}")
+
     # Saving all active listings
     combined_data = {
         "count": len(all_listings),
         "results": all_listings
     }
     etsy_listings = search.save_to_json(combined_data, "etsy_data/raw/etsy_listings.json")
-    print(f"There are a total of {len(all_listings)} active listings from this search.")
 
 
     #----- Level 1 Filtering: by the time created and listing description -----
@@ -72,7 +74,8 @@ def main():
             }
             filter1_listings.append(item)
 
-    print(f"There are {len(filter1_listings)} listings made it through after 1st level of filtering.")
+    print("2. First Level Filtering:")
+    print(f"Listings after 1st level filtering: {len(filter1_listings)}")
 
 
     #----- Level 2 Filtering: by the listing properties -----
@@ -93,14 +96,15 @@ def main():
         for property in each_item["results"]:
             if property["property_name"] == "Women's clothing size":
                 if property["values"] in [["XS"], ["S"], ["36"]] or \
-                        property["scale_name"] == "UK" and property["values"] in [["10"], ["8"]] or \
-                        property["scale_name"] == "US numeric" and property["values"] == ["6"]:
+                property["scale_name"] == "UK" and property["values"] in [["10"], ["8"]] or \
+                property["scale_name"] == "US numeric" and property["values"] == ["6"]:
                     filter2_index.append(idx)
 
     # Cascading the level 2 filter results from the list of listings
     filter2_listings = [filter1_listings[i] for i in filter2_index]
 
-    print(f"There are {len(filter2_listings)} listings made it through after 2nd level of filtering.")
+    print("3. Second Level Filtering:")
+    print(f"- Listings after 2nd level filtering: {len(filter2_listings)}")
 
     #----- Saving Data to Local Directory -----
     # Creating new directory at date of search
@@ -121,7 +125,7 @@ def main():
             file_path = os.path.join(directory, f"dress{idx}.jpg")
             urllib.request.urlretrieve(url, file_path)
 
-    print("All fetching and saving has completed.")
+    print("All fetching and saving operations have been completed successfully.")
 
 if __name__ == "__main__":
     main()
