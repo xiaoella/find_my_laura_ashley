@@ -20,7 +20,7 @@ The `get_data.py` script is designed to fetch, filter and save data from Etsy's 
 
 **Saving Data and Directory Management:** Saves the filtered listings along with their properties and associated images into JSON files, then automatically creates directories based on the current date to organise saved data and images.
 
-### Instructions to Fetch Data
+### Instructions to Run
 
 **To check if your API works, just run:**
 ```
@@ -53,7 +53,6 @@ The `predict.py` script is designed to run a model on the saved data from the pr
 ### Classification Model
 Hoping to automate the identification of authentic Laura Ashley dresses from online listings as much as possible, I trained a Random Forest model focusing on recognising the iconic Laura Ashley logo, particularly the one from the 1980s. This task will be very helpful in the process, because many sellers tend to upload these close-up photos of the label, as they serve as a key indicator of authenticity.
 
-**Data Collection and Preparation**
 To train the model, I gathered a dataset comprising two categories:
 
 - Label Images: These images featured the distinctive Laura Ashley logo from the 1980s. The logos are mostly clear and centred, making them ideal for model training.
@@ -66,8 +65,8 @@ To train the model, I gathered a dataset comprising two categories:
 
 I aimed to curate the dataset to closely mimic the type of images the model would encounter when deployed. Specifically, for the non-logo images, I selected examples that represent real listings. These images showcase various elements such as the dress, intricate details, and different parts of the label, thereby providing a comprehensive representation of the non-logo context.
 
-### Instructions to Make Predictions on Fetched Data
-Running the `predict.py` script:
+### Instructions to Run
+**Running the `predict.py` script to make predictions on data collected from previous step:**
 ```
 python predict.py
 ```
