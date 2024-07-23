@@ -71,7 +71,7 @@ I aimed to curate the dataset to closely mimic the type of images the model woul
 python predict.py
 ```
 
-This script will run the RF model on all images that belonged to each listing, and if the model predicted a logo within any of the images of one listing folder, then it will return 'True' for that listing, suggesting it thinks the listing is a True Laura Ashley dress as at least one of the images were detected with a logo.
+This script processes all images in each listing folder that's associated with each listing, using a Random Forest model. If the model detects a logo in any of the images for a given folder, it will classify that listing as 'True'. This indicates that it is likely a genuine Laura Ashley dress, as the presence of a logo in at least one image suggests authenticity.
 
-At the end of the script, it creates a new and final .csv file in preparation for the emailing, that looks something like this:
+At the end of the script, a .csv file is generated, which is prepared for emailing (the next step). This file summarises the prediction results, as illustrated in the example image below:
 <img src="src/images/prediction_results.png" alt="prediction_results"/>
