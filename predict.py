@@ -65,9 +65,12 @@ def main():
     # Combine prediction results with listing details
     results = pd.DataFrame(predictions)
     data = pd.read_json(f"{root_dir}/listings.json")
-
     df = pd.merge(data, results, on="listing_id")
 
+    # Tidying up the dataframe in preparation for the next step
+    df.sort_values(by="listing_id", inplace=True)
+    df.reset_index(drop=True, inplace=True)
+    df["title"] = df["title"].str.capitalize()
 
     # Write data to CSV
     df.to_csv(f"etsy_data/{date}/results.csv", index=False)

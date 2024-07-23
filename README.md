@@ -7,7 +7,49 @@ Finding a Laura Ashley dress that also fits perfectly is not easy. Since the bra
 
 This project aims to identify the perfect Laura Ashley dress by fetching data from Etsy's website via the Etsy API, and filtering the results based on the listings' descriptions including sizes and measurements. It also use a Random Forest Classifier model to try to recognise if any images of the listed item contains the Laura Ashley label showing its 1980s logo.
 
-## Classification Model
+## 1. Fetching and Filtering Data from Etsy
+The `get_data.py` script is designed to fetch, filter and save data from Etsy's API.
+
+### Features
+**Data Fetching:** Retrieves active listings from Etsy's API using specific keywords related to vintage Laura Ashley dresses.
+
+**Data Filtering:** Implements two levels of filtering:
+
+- Level 1 Filtering: Filters listings based on title keywords, and creation timestamp.
+- Level 2 Filtering: Further filters listings based on specific property values like clothing size.
+
+**Saving Data and Directory Management:** Saves the filtered listings along with their properties and associated images into JSON files, then automatically creates directories based on the current date to organise saved data and images.
+
+### Instructions to Fetch Data
+
+**To check if your API works, just run:**
+```
+python test_etsy_api.py
+```
+It will then display if your API key is working or not.
+
+**To fetch and save data (running the `get_data.py` script):**
+```
+python get_data.py
+```
+
+**Sample output:**
+```
+1. Initial Data Extraction:
+- Total active listings retrieved: 820
+- Data saved to etsy_data/raw/etsy_listings.json
+2. First Level Filtering:
+Listings after 1st level filtering: 43
+- Data saved to etsy_data/raw/filtered_listings_properties.json
+3. Second Level Filtering:
+- Listings after 2nd level filtering: 3
+- Data saved to etsy_data/240723/listings.json
+All fetching and saving operations have been completed successfully.
+```
+
+## 2. Making Predictions
+
+### Classification Model
 Hoping to automate the identification of authentic Laura Ashley dresses from online listings as much as possible, I trained a random forest model focusing on recognising the iconic Laura Ashley logo, particularly the one from the 1980s. This task will be very helpful in the process, because many sellers tend to upload these close-up photos of the label, as they serve as a key indicator of authenticity.
 
 ### Data Collection and Preparation
@@ -23,42 +65,10 @@ To train the model, I gathered a dataset comprising two categories:
 
 I aimed to curate the dataset to closely mimic the type of images the model would encounter when deployed.
 
-## Fetching and Filtering Data from Etsy
-The `get_data.py` script is designed to fetch, filter and save data from Etsy's API.
-
-### Features
-**Data Fetching:** Retrieves active listings from Etsy's API using specific keywords related to vintage Laura Ashley dresses.
-
-**Data Filtering:** Implements two levels of filtering:
-
-- Level 1 Filtering: Filters listings based on title keywords, and creation timestamp.
-- Level 2 Filtering: Further filters listings based on specific property values like clothing size.
-
-**Saving Data and Directory Management:** Saves the filtered listings along with their properties and associated images into JSON files, then automatically creates directories based on the current date to organise saved data and images.
-
-### Instructions to Run
-
-**To check if your API works, just run:**
+### Instructions to Make Predictions on Fetched Data
+**To make predictions (running the `predict.py` script):**
 ```
-python test_etsy_api.py
-```
-It will then display if your API key is working or not.
-
-**To fetch and save data (running the get_data script):**
-```
-python get_data.py
+python predict.py
 ```
 
-**Sample output:**
-```
-Data saved to etsy_data/raw/etsy_listings.json
-There are a total of 818 active listings from this search.
-There are 24 listings made it through after 1st level of filtering.
-Data saved to etsy_data/raw/filtered_listings_properties.json
-There are 6 listings made it through after 2nd level of filtering.
-Data saved to etsy_data/240717/listings.json
-All fetching and saving has completed.
-```
-
-## Making Predictions
-Working in progress...
+This script will run the RF model on all images that belonged to each listing, and if the model predicted a logo within any of the images of one listing folder, then it will return 'True' for that listing, suggesting it thinks the listing is a True Laura Ashley dress as at least one of the images were detected with a logo. At the end of the script, it creates a new and final .csv file in preparation for the emailing. 
