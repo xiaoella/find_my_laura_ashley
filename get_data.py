@@ -96,8 +96,8 @@ def main():
         for property in each_item["results"]:
             if property["property_name"] == "Women's clothing size":
                 if property["values"] in [["XS"], ["S"], ["36"]] or \
-                property["scale_name"] == "UK" and property["values"] in [["10"], ["8"]] or \
-                property["scale_name"] == "US numeric" and property["values"] == ["6"]:
+                (property["scale_name"] == "UK" and property["values"] in [["10"], ["8"]]) or \
+                (property["scale_name"] == "US numeric" and property["values"] == ["6"]):
                     filter2_index.append(idx)
 
     # Cascading the level 2 filter results from the list of listings
