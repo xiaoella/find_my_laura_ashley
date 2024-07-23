@@ -48,12 +48,12 @@ All fetching and saving operations have been completed successfully.
 ```
 
 ## 2. Making Predictions
-The `predict.py` script is designed to run a Random Forest Classifier model on the saved data from the previous step, identifying if any images contains the Laura Ashley logo.
+The `predict.py` script is designed to run a model on the saved data from the previous step, identifying if any images contains the Laura Ashley logo.
 
 ### Classification Model
-Hoping to automate the identification of authentic Laura Ashley dresses from online listings as much as possible, I trained a random forest model focusing on recognising the iconic Laura Ashley logo, particularly the one from the 1980s. This task will be very helpful in the process, because many sellers tend to upload these close-up photos of the label, as they serve as a key indicator of authenticity.
+Hoping to automate the identification of authentic Laura Ashley dresses from online listings as much as possible, I trained a Random Forest model focusing on recognising the iconic Laura Ashley logo, particularly the one from the 1980s. This task will be very helpful in the process, because many sellers tend to upload these close-up photos of the label, as they serve as a key indicator of authenticity.
 
-### Data Collection and Preparation
+**Data Collection and Preparation**
 To train the model, I gathered a dataset comprising two categories:
 
 - Label Images: These images featured the distinctive Laura Ashley logo from the 1980s. The logos are mostly clear and centred, making them ideal for model training.
@@ -64,10 +64,10 @@ To train the model, I gathered a dataset comprising two categories:
 
 <img src="src/images/dresses.png" alt="dresses" width="500"/>
 
-I aimed to curate the dataset to closely mimic the type of images the model would encounter when deployed.
+I aimed to curate the dataset to closely mimic the type of images the model would encounter when deployed. Specifically, for the non-logo images, I selected examples that represent real listings. These images showcase various elements such as the dress, intricate details, and different parts of the label, thereby providing a comprehensive representation of the non-logo context.
 
 ### Instructions to Make Predictions on Fetched Data
-**To make predictions (running the `predict.py` script):**
+Running the `predict.py` script:
 ```
 python predict.py
 ```
