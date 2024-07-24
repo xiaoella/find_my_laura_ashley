@@ -22,7 +22,7 @@ The `get_data.py` script is designed to fetch, filter and save data from Etsy's 
 
 ### Instructions to Run
 
-**To check if your API works, just run:**
+To check if your API works, just run:
 ```
 python test_etsy_api.py
 ```
@@ -66,12 +66,12 @@ To train the model, I gathered a dataset comprising two categories:
 I aimed to curate the dataset to closely mimic the type of images the model would encounter when deployed. Specifically, for the non-logo images, I selected examples that represent real listings. These images showcase various elements such as the dress, intricate details, and different parts of the label, thereby providing a comprehensive representation of the non-logo context.
 
 ### Instructions to Run
-**Running the script to make predictions on data collected from previous step:**
 ```
 python predict.py
 ```
+Note: run the script after data has been fetched and saved.
 
-This script processes all images in each listing folder that's associated with each listing, using a Random Forest model. If the model detects a logo in any of the images for a given folder, it will classify that listing as 'True'. This indicates that it is likely a genuine Laura Ashley dress, as the presence of a logo in at least one image suggests authenticity.
+This script will processes all images in each listing folder that's associated with each listing, using a Random Forest model. If the model detects a logo in any of the images for a given folder, it will classify that listing as 'True'. This indicates that it is likely a genuine Laura Ashley dress, as the presence of a logo in at least one image suggests authenticity.
 
 At the end of the script, a .csv file is generated, which is prepared for emailing (the next step). This file summarises the prediction results, as illustrated in the example image below:
 <img src="src/images/prediction_results.png" alt="prediction results"/>
@@ -85,12 +85,13 @@ The script includes basic error handling to catch and print errors related to em
 ```
 python send_email.py
 ```
-## Sample Email
+Note: run the script after data has been fetched and saved, and predictions have been made.
+
+### Sample Email
 
 When there is a comprehensive DataFrame that contains both "True" and "False" predictions, the email will have two sections. It starts with the listings that have a "True" prediction. The second section of the email includes the "False" predictions. It is possible that these listings are still authentic Laura Ashley dresses, but the seller might not have uploaded a picture of the logo.
 
 | ![Email example](src/images/listings_1.png) | ![Email example](src/images/listings_2.png) |
-|:---:|:---:|
 
 Sample Email when there is only one section related to the predictions:
 <img src="src/images/one_listing.png" alt="Email example" width="400"/>
