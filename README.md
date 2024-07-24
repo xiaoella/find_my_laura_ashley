@@ -93,17 +93,12 @@ python send_email.py
 
 When there is a comprehensive DataFrame that contains both "True" and "False" predictions, the email will have two sections. It starts with the listings that have a "True" prediction. The second section of the email includes the "False" predictions. It is possible that these listings are still authentic Laura Ashley dresses, but the seller might not have uploaded a picture of the logo.
 
-<div style="text-align: center;">
-    <img src="src/images/listings_1.png" alt="Email example" width="500" style="margin-right: 20px;"/>
-    <img src="src/images/listings_2.png" alt="Email example" width="500"/>
-</div>
+| ![Email example](src/images/listings_1.png) | ![Email example](src/images/listings_2.png) |
+|:---:|:---:|
+| **Listings with True and False Predictions** | **Listings with True and False Predictions** |
 
 Sample Email when there is only one section related to the predictions:
-<div style="text-align: center;">
-    <img src="src/images/one_listing.png" alt="Email example" width="500"/>
-</div>
+![Email example](src/images/one_listing.png)
 
 Sample Email when there are no listings after fetching and filtering:
-<div style="text-align: center;">
-    <img src="src/images/no_listing.png" alt="Email example" width="300"/>
-</div>
+![Email example](src/images/no_listing.png)
