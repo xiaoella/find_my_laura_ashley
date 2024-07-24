@@ -92,6 +92,7 @@ Note: run the script after data has been fetched and saved, and predictions have
 When there is a comprehensive DataFrame that contains both "True" and "False" predictions, the email will have two sections. It starts with the listings that have a "True" prediction. The second section of the email includes the "False" predictions. It is possible that these listings are still authentic Laura Ashley dresses, but the seller might not have uploaded a picture of the logo.
 
 | ![Email example](src/images/listings_1.png) | ![Email example](src/images/listings_2.png) |
+|:---:|:---:|
 
 Sample Email when there is only one section related to the predictions:
 <img src="src/images/one_listing.png" alt="Email example" width="400"/>
