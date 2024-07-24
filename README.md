@@ -81,13 +81,13 @@ The send_email.py script as a final step, will compose and send an email contain
 
 The script includes basic error handling to catch and print errors related to email sending or file operations. It is also prepared for different scenarios: such as when there are no listings (the dataframe is empty), or only one of "True" or "False" predictions exist. If there are only truly predicted listings, the body will include details and images of these and will omit sections related to false predictions, and vice versa for only the "False" ones present.
 
-**Running the email script**
+### Instructions to Run
 ```
 python send_email.py
 ```
 Note: run the script after data has been fetched and saved, and predictions have been made.
 
-### Sample Email
+**Sample Email**
 
 When there is a comprehensive DataFrame that contains both "True" and "False" predictions, the email will have two sections. It starts with the listings that have a "True" prediction. The second section of the email includes the "False" predictions. It is possible that these listings are still authentic Laura Ashley dresses, but the seller might not have uploaded a picture of the logo.
 
