@@ -93,7 +93,7 @@ When there is a comprehensive DataFrame that contains both "True" and "False" pr
 |:---:|:---:|
 
 Sample Email when there is only one section related to the predictions:
-<img src="src/images/one_listing.png" alt="Email example" width="450"/>
+<img src="src/images/one_listing.png" alt="Email example" width="400"/>
 
 Sample Email when there are no listings after fetching and filtering:
-<img src="src/images/no_listing.png" alt="Email example" width="350"/>
+<img src="src/images/no_listing.png" alt="Email example" width="400"/>
