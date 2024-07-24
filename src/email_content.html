@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email Template</title>
+    <style>
+        body {
+            font-family: Verdana, sans-serif;
+            text-align: center;
+            margin: 5;
+            padding: 0;
+        }
+        .container {
+            display: inline-block;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .title {
+            font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+            font-size: 30px;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 20px;
+            word-wrap: break-word;
+        }
+        .subtitle {
+            font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+            font-size: 20px;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        .listing {
+            margin-bottom: 15px;
+        }
+        .listing .title-text {
+            margin-bottom: 5px;
+        }
+        .listing a {
+            display: block;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .listing img {
+            width: 300px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .listing a {
+            color: #1a0dab;
+            text-decoration: none;
+        }
+        .listing a:hover {
+            text-decoration: underline;
+        }
+        .closing {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {{ email_body }}
+    </div>
+</body>
+</html>
