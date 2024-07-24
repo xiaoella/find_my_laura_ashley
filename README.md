@@ -66,7 +66,7 @@ To train the model, I gathered a dataset comprising two categories:
 I aimed to curate the dataset to closely mimic the type of images the model would encounter when deployed. Specifically, for the non-logo images, I selected examples that represent real listings. These images showcase various elements such as the dress, intricate details, and different parts of the label, thereby providing a comprehensive representation of the non-logo context.
 
 ### Instructions to Run
-**Running the `predict.py` script to make predictions on data collected from previous step:**
+**Running the script to make predictions on data collected from previous step:**
 ```
 python predict.py
 ```
@@ -74,4 +74,23 @@ python predict.py
 This script processes all images in each listing folder that's associated with each listing, using a Random Forest model. If the model detects a logo in any of the images for a given folder, it will classify that listing as 'True'. This indicates that it is likely a genuine Laura Ashley dress, as the presence of a logo in at least one image suggests authenticity.
 
 At the end of the script, a .csv file is generated, which is prepared for emailing (the next step). This file summarises the prediction results, as illustrated in the example image below:
-<img src="src/images/prediction_results.png" alt="prediction_results"/>
+<img src="src/images/prediction_results.png" alt="prediction results"/>
+
+## 3. Sending Results in an Email
+The send_email.py script as a final step, will compose and send an email containing the results of the Etsy data analysis, including images of the listings. This script is executed after the data has been fetched and filtered, and predictions have been made.
+
+The script includes basic error handling to catch and print errors related to email sending or file operations. It is also prepared for different scenarios: such as when there are no listings (the dataframe is empty), or only one of "True" or "False" predictions exist. If there are only truly predicted listings, the body will include details and images of these and will omit sections related to false predictions, and vice versa for only the "False" ones present.
+
+**Running the email script**
+```
+python send_email.py
+```
+**Sample Email**
+When there is a comprehensive DataFrame that contains both "True" and "False" predictions, the email will have two sections. It starts with the listings that have a "True" prediction. The second section of the email includes the "False" predictions. It is possible that these listings are still authentic Laura Ashley dresses, but the seller might not have uploaded a picture of the logo.
+<img src="src/images/listings_1.png" alt="Email example"/><img src="src/images/listings_2.png" alt="Email example"/>
+
+Sample Email when there is only one section related to the predictions:
+<img src="src/images/one_listing.png" alt="Email example"/>
+
+Sample Email when there are no listings after fetching and filtering:
+<img src="src/images/no_listing.png" alt="Email example"/>
