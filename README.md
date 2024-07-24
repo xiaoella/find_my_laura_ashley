@@ -57,11 +57,15 @@ To train the model, I gathered a dataset comprising two categories:
 
 - Label Images: These images featured the distinctive Laura Ashley logo from the 1980s. The logos are mostly clear and centred, making them ideal for model training.
 
+<div style="text-align: center;">
 <img src="src/images/logos.png" alt="logos" width="500"/>
+<div>
 
 - Non-Label Images: These included a variety of Laura Ashley and Laura Ashley 'style' dress photos from Etsy listings. The images in this category did not contain the Laura Ashley logo and represented general product photography, capturing the typical noise and variability found in real-world data.
 
+<div style="text-align: center;">
 <img src="src/images/dresses.png" alt="dresses" width="500"/>
+<div>
 
 I aimed to curate the dataset to closely mimic the type of images the model would encounter when deployed. Specifically, for the non-logo images, I selected examples that represent real listings. These images showcase various elements such as the dress, intricate details, and different parts of the label, thereby providing a comprehensive representation of the non-logo context.
 
@@ -85,12 +89,21 @@ The script includes basic error handling to catch and print errors related to em
 ```
 python send_email.py
 ```
-**Sample Email**
+## Sample Email
+
 When there is a comprehensive DataFrame that contains both "True" and "False" predictions, the email will have two sections. It starts with the listings that have a "True" prediction. The second section of the email includes the "False" predictions. It is possible that these listings are still authentic Laura Ashley dresses, but the seller might not have uploaded a picture of the logo.
-<img src="src/images/listings_1.png" alt="Email example" width="500"/><img src="src/images/listings_2.png" alt="Email example" width="500"/>
+
+<div style="text-align: center;">
+    <img src="src/images/listings_1.png" alt="Email example" width="500" style="margin-right: 20px;"/>
+    <img src="src/images/listings_2.png" alt="Email example" width="500"/>
+</div>
 
 Sample Email when there is only one section related to the predictions:
-<img src="src/images/one_listing.png" alt="Email example" width="500"/>
+<div style="text-align: center;">
+    <img src="src/images/one_listing.png" alt="Email example" width="500"/>
+</div>
 
 Sample Email when there are no listings after fetching and filtering:
-<img src="src/images/no_listing.png" alt="Email example" width="500"/>
+<div style="text-align: center;">
+    <img src="src/images/no_listing.png" alt="Email example" width="500"/>
+</div>
