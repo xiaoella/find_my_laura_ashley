@@ -105,5 +105,5 @@ Sample Email when there is only one section related to the predictions:
 
 Sample Email when there are no listings after fetching and filtering:
 <div style="text-align: center;">
-    <img src="src/images/no_listing.png" alt="Email example" width="500"/>
+    <img src="src/images/no_listing.png" alt="Email example" width="300"/>
 </div>
