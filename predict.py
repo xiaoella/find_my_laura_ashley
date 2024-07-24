@@ -62,19 +62,23 @@ def main():
             predictions["prediction"].append(predict_listing(listing_folder, model))
 
 
-    # Combine prediction results with listing details
+    # Make results into a dataframe, and load other properties of listings from json
     results = pd.DataFrame(predictions)
     data = pd.read_json(f"{root_dir}/listings.json")
-    df = pd.merge(data, results, on="listing_id")
-
-    # Tidying up the dataframe in preparation for the next step
-    df.sort_values(by="listing_id", inplace=True)
-    df.reset_index(drop=True, inplace=True)
-    df["title"] = df["title"].str.capitalize()
-
-    # Write data to CSV
-    df.to_csv(f"etsy_data/{date}/results.csv", index=False)
-    print(f"Listing data including prediction results saved.")
+    
+    if not data.empty:
+        df = pd.merge(data, results, on="listing_id")
+        # Tidying up the dataframe in preparation for emailing
+        df.sort_values(by="listing_id", inplace=True)
+        df.reset_index(drop=True, inplace=True)
+        df['title'] = df['title'].str.capitalize()
+        # Write data to CSV
+        df.to_csv(f"etsy_data/{date}/results.csv", index=False)
+        print(f"Listing data including prediction results saved.")
+    else: # There are no listings this wekk
+        empty_df = pd.DataFrame(columns=["listing_id", "shop_id", "title", "url", "prediction"])
+        empty_df.to_csv(f"etsy_data/{date}/results.csv", index=False)
+        print("No listings found. Empty results.csv created.")
 
 
 if __name__ == "__main__":
