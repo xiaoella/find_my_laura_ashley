@@ -1,5 +1,7 @@
 """
 This script tests if your Etsy API key works
+The ping endpoint of Etsy's Open API V3 is implemented for testing
+Documentation reference: https://developers.etsy.com/documentation/reference/
 """
 
 import os
