@@ -8,7 +8,8 @@ Finding a Laura Ashley dress that also fits perfectly is not easy. Since the bra
 This project aims to identify the perfect Laura Ashley dress by fetching data via API from Etsy's website, and filtering the downloaded .json file results based on the listings' descriptions such as size and measurements. After the filtering process, a Random Forest Classifier model was trained to try and detect if any images of the listed item contains the true Laura Ashley label which shows its 1980s logo.
 
 <img src="src/images/80s_laura_ashley_tag.jpg" alt="logos" width="500"/>
-<sub>image source: [This blog](https://vintageclothingguides.com/tags-labels/how-to-tell-if-laura-ashley-is-vintage/) contains some in-depth information on Laura Ashley tags and styles over the years</sub>
+<sup>image source: https://vintageclothingguides.com/tags-labels/how-to-tell-if-laura-ashley-is-vintage</sup>
+<sup>This blog also contains some in-depth information on Laura Ashley tags and styles over the years, it's worth a read if you're interested!</sup>
 
 
 ## 1. Fetching and Filtering Data from Etsy
@@ -23,10 +24,10 @@ python test_etsy_api.py
 It will then display if your API key is working or not.
 
 Endpoint used and documentation references:
-[findAllListingsActive](https://developers.etsy.com/documentation/reference/#operation/findAllListingsActive)
-[getListingProperties](https://developers.etsy.com/documentation/reference/#operation/getListingProperties
+- [findAllListingsActive](https://developers.etsy.com/documentation/reference/#operation/findAllListingsActive)
+- [getListingProperties](https://developers.etsy.com/documentation/reference/#operation/getListingProperties
 )
-[getListingImages](https://developers.etsy.com/documentation/reference/#operation/getListingImages)
+- [getListingImages](https://developers.etsy.com/documentation/reference/#operation/getListingImages)
 
 **To fetch and save data (running the `get_data.py` script):**
 ```
@@ -66,7 +67,8 @@ Hoping to automate the identification of authentic Laura Ashley dresses from onl
 To train the model, I gathered a dataset comprising two categories:
 
 | Label Images | Non-label Images |
-| <sub>These images featured the distinctive Laura Ashley tags from the 80s. The images are mostly clear with the tag centred, making them idea for model training.<sub> | <sub>These include a variety of pictures of general product photography, not showing any Laura Ashley logos.<sub> |
+|--------------|------------------|
+| <sub>These images featured the distinctive Laura Ashley tags from the 80s. The images are mostly clear with the tag centred, making them idea for model training.</sub> | <sub>These include a variety of pictures of general product photography, not showing any Laura Ashley logos.</sub> |
 | ![logos](src/images/logos.png) | ![dresses](src/images/dresses.png) |
 
 I aimed to curate the dataset to closely mimic the type of images the model would encounter when deployed. Specifically, for the non-logo images, I selected examples that captured the typical noise and variability found in real-world data. These images showcase various elements such as the dress, intricate details, and different parts of the label, thereby providing a comprehensive representation of the non-logo context.
