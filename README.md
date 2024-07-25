@@ -74,9 +74,10 @@ To train the model, I gathered images to form a dataset comprising two categorie
 
 I aimed to curate the dataset to closely mimic the type of images the model would encounter when deployed. Specifically, for the non-logo images, I selected examples that captured the typical noise and variability found in real-world data. These images showcase various elements such as the dress, intricate details, and different parts of the label, thereby providing a comprehensive representation of the non-logo context.
 
-#### Model Performance
+### Model Performance
+You can find the notebook documenting the model training & hyperparameter tuning [here](https://github.com/xiaoella/find_my_laura_ashley/blob/main/notebooks/Model%20Training.ipynb).
 
-You can find the notebook documenting the model training and hyperparameter tuning [here](https://github.com/xiaoella/find_my_laura_ashley/blob/main/notebooks/Model%20Training.ipynb). The model demonstrates strong performance with an accuracy score of 90.77%, and a recall score of 90.69%, highlighting its effectiveness in capturing actual positives to identify Laura Ashley logo tags. Despite the precision score is marginally lower at 88.92%, it aligns with my requirement of ensuring higher accuracy and recall while maintaining an acceptable level of false positives.
+The model demonstrates strong performance with an accuracy score of 90.77% and a recall score of 90.69%, highlighting its effectiveness in capturing actual positives to identify Laura Ashley logo tags. Despite the precision score is marginally lower at 88.92%, it aligns with my requirement of ensuring higher accuracy and recall while maintaining an acceptable level of false positives.
 
 ### Instructions to Run
 ```
@@ -88,6 +89,7 @@ This script will processes all images in each listing folder that's associated w
 
 At the end of the script a .csv file is generated, which will prepare for the email (the next step). This .csv file summarises the prediction results, example image below:
 <img src="src/images/prediction_results.png" alt="prediction results"/>
+
 
 ## 3. Sending Results in an Email
 The `send_email.py` script as a final step will compose and send an email containing the results of the Etsy data analysis, including images of the listings. This script is executed after the data has been fetched and filtered, and predictions have been made.
