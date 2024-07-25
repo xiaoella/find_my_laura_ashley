@@ -1,37 +1,47 @@
 # Find My Laura Ashley
 
 ### Where it started...
-I have been collecting Laura Ashley dresses for a few years, especially the vintage-inspired floral dresses from the brand's 'golden era' in the 1980s. Vintage fashion enthusiasts and collectors, like myself, are very fond of these dresses for their quality craftsmanship and their nostalgic, pictorial, and romantic style.
+I have been collecting Laura Ashley dresses for a few years, especially the vintage-inspired floral dresses from the brand's 'golden era' - the 1980s. Vintage prairie dress lovers and collectors, like myself, are very fond of these dresses for their quality craftsmanship as well as the nostalgic, pictorial, and romantic style.
 
-Finding a Laura Ashley dress that also fits perfectly is not easy. Since the brand stopped making these silhouettes and patterns after the 80s, and has gone out of business in 2020, these dresses are only available through second-hand sellers on platforms like Etsy. This search is further complicated by vintage sizing discrepancies: a 1980s Laura Ashley dress labelled as a 'UK 10' might fit a modern UK 8. Moreover, the brand's popularity leads some sellers to label non-Laura Ashley dresses as _'Laura Ashley style'_ or _'like Laura Ashley'_, adding another layer of complexity to the search.
+Finding a Laura Ashley dress that also fits perfectly is not easy. Since the brand stopped making these dresses after the 80s, and had gone out of business in 2020, these dresses are only available through second-hand sellers on platforms, like Etsy. The search is then further complicated by vintage sizing discrepancies: a 1980s Laura Ashley dress labelled as a 'UK 10' might fit a modern UK 8. Moreover, the brand's popularity leads some sellers to label other non-Laura-Ashely floral dresses as _'Laura Ashley style'_ or _'like Laura Ashley'_, adding another layer of complexity to the search.
 
-This project aims to identify the perfect Laura Ashley dress by fetching data from Etsy's website via the Etsy API, and filtering the results based on the listings' descriptions including sizes and measurements. It also use a Random Forest Classifier model to try to recognise if any images of the listed item contains the Laura Ashley label showing its 1980s logo.
+This project aims to identify the perfect Laura Ashley dress by fetching data via API from Etsy's website, and filtering the downloaded .json file results based on the listings' descriptions such as size and measurements. After the filtering process, a Random Forest Classifier model was trained to try and detect if any images of the listed item contains the true Laura Ashley label which shows its 1980s logo.
+
+<img src="src/images/80s_laura_ashley_tag.jpg" alt="logos" width="500"/>
+<sub>image source: [This blog](https://vintageclothingguides.com/tags-labels/how-to-tell-if-laura-ashley-is-vintage/) contains some in-depth information on Laura Ashley tags and styles over the years<sub>
+
 
 ## 1. Fetching and Filtering Data from Etsy
-The `get_data.py` script is designed to fetch, filter and save data from Etsy's API.
-
-### Features
-**Data Fetching:** Retrieves active listings from Etsy's API using specific keywords related to vintage Laura Ashley dresses.
-
-**Data Filtering:** Implements two levels of filtering:
-
-- Level 1 Filtering: Filters listings based on title keywords, and creation timestamp.
-- Level 2 Filtering: Further filters listings based on specific property values like clothing size.
-
-**Saving Data and Directory Management:** Saves the filtered listings along with their properties and associated images into JSON files, then automatically creates directories based on the current date to organise saved data and images.
+The first step is to fetch, filter and save data from Etsy's active listings. The `get_data.py` script is designed to exactly this.
 
 ### Instructions to Run
 
-To check if your API works, just run:
+The project uses Etsy's Open API v3. To check if your API works, just run:
 ```
 python test_etsy_api.py
 ```
 It will then display if your API key is working or not.
 
+Endpoint used and documentation references:
+[findAllListingsActive](https://developers.etsy.com/documentation/reference/#operation/findAllListingsActive)
+[getListingProperties](https://developers.etsy.com/documentation/reference/#operation/getListingProperties
+)
+[getListingImages](https://developers.etsy.com/documentation/reference/#operation/getListingImages)
+
 **To fetch and save data (running the `get_data.py` script):**
 ```
 python get_data.py
 ```
+
+### Features
+**Data Fetching:** Retrieves active listings from Etsy using specific keywords related to vintage Laura Ashley dresses.
+
+**Data Filtering:** Implements two levels of filtering:
+
+- Level 1 Filtering: Filters listings based on title keywords, and creation timestamp. This script is designed to run once a week, so I only aim to fetch the listings that were created and posted within the last week.
+- Level 2 Filtering: Further filters the listings based on specific property values like whether it is a clothing, and its listed size.
+
+**Saving Data and Directory Management:** Saves the filtered listings along with their properties and associated images as .json files, and automatically creates directories based on the current date in order to organise the saved data.
 
 **Sample output:**
 ```
@@ -48,22 +58,18 @@ All fetching and saving operations have been completed successfully.
 ```
 
 ## 2. Making Predictions
-The `predict.py` script is designed to run a model on the saved data from the previous step, identifying if any images contains the Laura Ashley logo.
+The `predict.py` script is designed to run a classification model on the saved data from the previous step, identifying if any images contain the 1980s Laura Ashley tag.
 
 ### Classification Model
 Hoping to automate the identification of authentic Laura Ashley dresses from online listings as much as possible, I trained a Random Forest model focusing on recognising the iconic Laura Ashley logo, particularly the one from the 1980s. This task will be very helpful in the process, because many sellers tend to upload these close-up photos of the label, as they serve as a key indicator of authenticity.
 
 To train the model, I gathered a dataset comprising two categories:
 
-- Label Images: These images featured the distinctive Laura Ashley logo from the 1980s. The logos are mostly clear and centred, making them ideal for model training.
+| Label Images | Non-label Images |
+| <sub>These images featured the distinctive Laura Ashley tags from the 80s. The images are mostly clear with the tag centred, making them idea for model training.<sub> | <sub>These include a variety of pictures of general product photography, not showing any Laura Ashley logos.<sub> |
+| ![logos](src/images/logos.png) | ![dresses](src/images/dresses.png) |
 
-<img src="src/images/logos.png" alt="logos" width="500"/>
-
-- Non-Label Images: These included a variety of Laura Ashley and Laura Ashley 'style' dress photos from Etsy listings. The images in this category did not contain the Laura Ashley logo and represented general product photography, capturing the typical noise and variability found in real-world data.
-
-<img src="src/images/dresses.png" alt="dresses" width="500"/>
-
-I aimed to curate the dataset to closely mimic the type of images the model would encounter when deployed. Specifically, for the non-logo images, I selected examples that represent real listings. These images showcase various elements such as the dress, intricate details, and different parts of the label, thereby providing a comprehensive representation of the non-logo context.
+I aimed to curate the dataset to closely mimic the type of images the model would encounter when deployed. Specifically, for the non-logo images, I selected examples that captured the typical noise and variability found in real-world data. These images showcase various elements such as the dress, intricate details, and different parts of the label, thereby providing a comprehensive representation of the non-logo context.
 
 ### Instructions to Run
 ```

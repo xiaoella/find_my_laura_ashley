@@ -14,6 +14,8 @@ class EtsySearch:
 
 
     def get_listings(self, keywords: str, offset: int) -> Dict[str, Any]:
+    # This uses Etsy's Open API V3 [findAllListingsActive] endpoint
+    # https://developers.etsy.com/documentation/reference/#operation/findAllListingsActive
         listing_url = "https://openapi.etsy.com/v3/application/listings/active"
         headers = {"x-api-key": self.api_key}
         params = {
@@ -34,6 +36,8 @@ class EtsySearch:
 
 
     def get_listing_properties(self, shop_id: int, listing_id: int) -> Dict[str, Any]:
+    # This uses Etsy's Open API V3 [getListingProperties] endpoint
+    # https://developers.etsy.com/documentation/reference/#operation/getListingProperties
         url = f"https://openapi.etsy.com/v3/application/shops/{shop_id}/listings/{listing_id}/properties"
         headers = {"x-api-key": self.api_key}
         try:
@@ -46,6 +50,8 @@ class EtsySearch:
 
 
     def fetch_images(self, listing_id: int) -> Dict:
+    # This uses Etsy's Open API V3 [getListingImages] endpoint
+    # https://developers.etsy.com/documentation/reference/#operation/getListingImages
         url = f"https://openapi.etsy.com/v3/application/listings/{listing_id}/images"
         headers = {"x-api-key": self.api_key}
         try:
