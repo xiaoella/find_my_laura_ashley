@@ -7,17 +7,15 @@ Finding a Laura Ashley dress that also fits perfectly is not easy. Since the bra
 
 This project aims to identify the perfect Laura Ashley dress by fetching data via API from Etsy's website, and filtering the downloaded .json file results based on the listings' descriptions such as size and measurements. After the filtering process, a Random Forest Classifier model was trained to try and detect if any images of the listed item contains the true Laura Ashley label which shows its 1980s logo.
 
-<img src="src/images/80s_laura_ashley_tag.jpg" alt="logos" width="500"/>
+<img src="src/images/80s_laura_ashley_tag.png" alt="logos" width="500"/>
 <sup>image source: https://vintageclothingguides.com/tags-labels/how-to-tell-if-laura-ashley-is-vintage</sup>
+
 <sup>This blog also contains some in-depth information on Laura Ashley tags and styles over the years, it's worth a read if you're interested!</sup>
 
 
 ## 1. Fetching and Filtering Data from Etsy
-The first step is to fetch, filter and save data from Etsy's active listings. The `get_data.py` script is designed to exactly this.
+The first step is to fetch, filter and save data from Etsy's active listings. The `get_data.py` script is designed to exactly this. The script interacts with Etsy's Open API v3. To check if your API works, you could first run:
 
-### Instructions to Run
-
-The project uses Etsy's Open API v3. To check if your API works, just run:
 ```
 python test_etsy_api.py
 ```
@@ -29,7 +27,10 @@ Endpoint used and documentation references:
 )
 - [getListingImages](https://developers.etsy.com/documentation/reference/#operation/getListingImages)
 
-**To fetch and save data (running the `get_data.py` script):**
+
+### Instructions to Run
+To fetch and save data:
+
 ```
 python get_data.py
 ```
@@ -68,7 +69,7 @@ To train the model, I gathered a dataset comprising two categories:
 
 | Label Images | Non-label Images |
 |--------------|------------------|
-| <sub>These images featured the distinctive Laura Ashley tags from the 80s. The images are mostly clear with the tag centred, making them idea for model training.</sub> | <sub>These include a variety of pictures of general product photography, not showing any Laura Ashley logos.</sub> |
+| <sup>These images featured the distinctive Laura Ashley tags from the 80s. The images are mostly clear with the tag centred, making them idea for model training.</sup> | <sup>These include a variety of pictures of general product photography, not showing any Laura Ashley logos.</sup> |
 | ![logos](src/images/logos.png) | ![dresses](src/images/dresses.png) |
 
 I aimed to curate the dataset to closely mimic the type of images the model would encounter when deployed. Specifically, for the non-logo images, I selected examples that captured the typical noise and variability found in real-world data. These images showcase various elements such as the dress, intricate details, and different parts of the label, thereby providing a comprehensive representation of the non-logo context.
@@ -99,8 +100,8 @@ Note: run the script after data has been fetched and saved, and predictions have
 
 When there is a comprehensive DataFrame that contains both "True" and "False" predictions, the email will have two sections. It starts with the listings that have a "True" prediction. The second section of the email includes the "False" predictions. It is possible that these listings are still authentic Laura Ashley dresses, but the seller might not have uploaded a picture of the logo.
 
+|---------------------------------------------|---------------------------------------------|
 | ![Email example](src/images/listings_1.png) | ![Email example](src/images/listings_2.png) |
-|:---:|:---:|
 
 Sample Email when there is only one section related to the predictions:
 <img src="src/images/one_listing.png" alt="Email example" width="400"/>
