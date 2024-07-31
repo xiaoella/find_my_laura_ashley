@@ -7,16 +7,17 @@ import pickle
 import pandas as pd
 import numpy as np
 from datetime import datetime
-import tensorflow as tf
-from tensorflow.keras.utils import load_img, img_to_array
+from PIL import Image
+from skimage.transform import resize
 
 
 # Function to process image into array matching the size for the trained model
 def process_img(img_path, target_size=(256, 256)):
     try:
-        image = load_img(img_path)
-        img_array = img_to_array(image)
-        img_array = tf.image.resize(img_array, target_size).numpy().flatten()
+        image = Image.open(img_path)
+        img_array = np.array(image)
+        img_array = resize(img_array, target_size, anti_aliasing=True)
+        img_array = img_array.flatten()
         return np.expand_dims(img_array, axis=0)
     except Exception as e:
         print(f"An error occurred: {e}")
