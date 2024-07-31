@@ -41,12 +41,24 @@ def main():
 
 
     #----- Level 1 Filtering: by the time created and listing description -----
-    with open("src/keywords.json", "r") as file:
-        data = json.load(file)
 
-    must_have_word = data["must_have_word"]
-    keywords = data["keywords"]
-    bomb_words = data["bomb_words"]
+    keyword = {
+        "must_have_word": ["laura ashley"],
+        "keywords": [
+            "laura ashley", "vintage dress", "uk 8", "uk 10", "size xs", "size s", "vintage 10",
+            "waist", "13 inches", "13\"", "26 inches", "26\"",
+            "pit to pit", "17 inches", "17\"", "cotton"
+        ],
+        "bomb_words": [
+            "uk 12", "12 uk", "uk 14", "14 uk", "uk 16", "16 uk",
+            "us 10", "10 us", " m ", " l ",
+            "laura ashley style", "handmade"
+        ]
+    }
+
+    must_have_word = keyword["must_have_word"]
+    keywords = keyword["keywords"]
+    bomb_words = keyword["bomb_words"]
 
     filter1_listings = []
     timestamp = (datetime.now() - timedelta(days=7)).timestamp()

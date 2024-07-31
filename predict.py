@@ -40,7 +40,8 @@ def predict_listing(listing_folder, model):
 
 def main():
     # Load the classification model
-    with open("src/logo_identifier.pkl", "rb") as file:
+    src_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "src"))
+    with open(f"{src_dir}/logo_identifier.pkl", "rb") as file:
         model = pickle.load(file)
 
     # Set the root directory file path
@@ -76,7 +77,7 @@ def main():
         # Write data to CSV
         df.to_csv(f"etsy_data/{date}/results.csv", index=False)
         print(f"Listing data including prediction results saved.")
-    else: # There are no listings this wekk
+    else: # There are no listings this week
         empty_df = pd.DataFrame(columns=["listing_id", "shop_id", "title", "url", "prediction"])
         empty_df.to_csv(f"etsy_data/{date}/results.csv", index=False)
         print("No listings found. Empty results.csv created.")

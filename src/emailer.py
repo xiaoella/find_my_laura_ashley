@@ -18,7 +18,8 @@ class Emailer:
         df_true = df[df["prediction"] == True]
         df_false = df[df["prediction"] == False]
 
-        with open("src/email_content.html", "r") as file:
+        src_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src"))
+        with open(f"{src_dir}/email_content.html", "r") as file:
             html_content = file.read()
         
         email_body = """<div class="title">Weekly Laura Ashley Digest</div>"""
