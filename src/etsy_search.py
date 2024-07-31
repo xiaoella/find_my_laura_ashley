@@ -8,6 +8,15 @@ import json
 from typing import List, Dict, Any
 
 
+# Function to create a directory
+def make_directory(path):
+    try:
+        os.makedirs(path, exist_ok=True)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    return path
+
+
 class EtsySearch:
     def __init__(self):
         self.api_key = os.environ.get("ETSY_API_KEY")
@@ -77,6 +86,9 @@ class EtsySearch:
 
 
     def save_to_json(self, listings: Dict[str, Any], filepath: str) -> str:
+        dirname = "/".join(filepath.split("/")[:-1])
+        if not os.path.exists(dirname):
+            make_directory(dirname)
         try:
             with open(filepath, 'w') as json_file:
                 json.dump(listings, json_file, indent=4)

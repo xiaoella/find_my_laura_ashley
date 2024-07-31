@@ -6,16 +6,7 @@ import os
 import json
 import urllib.request 
 from datetime import datetime, timedelta
-from src.etsy_search import EtsySearch
-
-
-# Function to create a directory
-def make_directory(path):
-    try:
-        os.makedirs(path, exist_ok=True)
-    except Exception as e:
-        print(f"An error occurred: {e}")
-    return path
+from src.etsy_search import EtsySearch, make_directory
 
 
 # Main function to run the script
