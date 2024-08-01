@@ -11,7 +11,6 @@ This project aims to identify the perfect Laura Ashley dress, by fetching data f
 1980s Vintage Laura Ashley Tags
 
 <sup>image source: https://vintageclothingguides.com/tags-labels/how-to-tell-if-laura-ashley-is-vintage</sup>
-
 <sup>This blog also contains some in-depth information on Laura Ashley tags and styles over the years, it's worth a read if you're interested!</sup>
 
 
