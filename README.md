@@ -8,10 +8,10 @@ Finding a Laura Ashley dress that also fits perfectly is not easy. Since the bra
 This project aims to identify the perfect Laura Ashley dress, by fetching data from Etsy's website via API, and filtering the downloaded .json file results based on the listings' descriptions, such as size and measurements. After the filtering process, a pre-trained Random Forest Classifier model is used to detect if any images of the listings contain a tag showing the pre-2000s Laura Ashley logo. As a final step, an emailing script was designed to wrap up all the findings in a neat email, containing both predicted 'True' and 'False' results, to avoid missing out on a genuine dress.
 
 <img src="src/images/80s_laura_ashley_tag.png" alt="logos" width="500"/>
-1980s Vintage Laura Ashley Tags
 
-<sup>image source: https://vintageclothingguides.com/tags-labels/how-to-tell-if-laura-ashley-is-vintage</sup>
-<sup>This blog also contains some in-depth information on Laura Ashley tags and styles over the years, it's worth a read if you're interested!</sup>
+1980s Vintage Laura Ashley Tags
+<sup><sub>image source: https://vintageclothingguides.com/tags-labels/how-to-tell-if-laura-ashley-is-vintage</sup></sub>
+<sup><sub>This blog also contains some in-depth information on Laura Ashley tags and styles over the years, it's worth a read if you're interested!</sup></sub>
 
 
 ## 1. Fetching and Filtering Data from Etsy
