@@ -14,12 +14,11 @@ This project aims to identify the perfect Laura Ashley dress, by fetching data f
 
 
 ## 1. Fetching and Filtering Data from Etsy
-The first step is to fetch, filter and save data from Etsy's active listings. The `get_data.py` script is designed to do exactly this. The script interacts with Etsy's Open API v3. To check if your API works, you could first run the API tester script:
+The first step is to fetch, filter and save data from Etsy's active listings. The `get_data.py` script is designed to do exactly this. The script interacts with Etsy's Open API v3. To check if your API works, you could first run the API tester script to check if your API key is working:
 
 ```
 python test_etsy_api.py
 ```
-It will then display if your API key is working or not.
 
 Endpoints used and documentation references:
 - [findAllListingsActive](https://developers.etsy.com/documentation/reference/#operation/findAllListingsActive)
