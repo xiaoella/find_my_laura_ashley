@@ -13,7 +13,7 @@ This project aims to identify the perfect Laura Ashley dress, by fetching data f
 <sup>This blog also contains some in-depth information on Laura Ashley tags and styles over the years, it's worth a read if you're interested!</sup>
 
 
-## 1. Fetching and Filtering Data from Etsy
+## Step 1: Fetching and Filtering Data from Etsy
 The first step is to fetch, filter and save data from Etsy's active listings. The `get_data.py` script is designed to do exactly this. The script interacts with Etsy's Open API v3. To check if your API works, you could first run the API tester script to check if your API key is working:
 
 ```
@@ -58,7 +58,7 @@ Listings after 1st level filtering: 43
 All fetching and saving operations have been completed successfully.
 ```
 
-## 2. Making Predictions
+## Step 2: Making Predictions
 The `predict.py` script is designed to run a classification model on the saved data from the previous step, identifying if any images contain the 1980s Laura Ashley tag.
 
 ### Classification Model
@@ -90,7 +90,7 @@ At the end of the script, a .csv file is generated that summarises the results, 
 <img src="src/images/prediction_results.png" alt="prediction results"/>
 
 
-## 3. Sending Results in an Email
+## Step 3: Sending Results in an Email
 The `send_email.py` script, as the final step, will compose and wrap up the results of this analysis in an email that contains the title description of the listing, the main (homepage) image of the listing, and a clickable link that takes me to the Etsy site. This script is executed after the data has been fetched and filtered, and predictions have been made.
 
 Although the listings have been labelled as 'True' or 'False' in the previous step, the email will still include all listings that have passed the second level of filtering. It is possible that 'False' listings are still authentic Laura Ashley dresses, but the seller might not have uploaded a picture of the logo, or my model may have produced a false negative result. Therefore, I chose to include the 'False' results in a secondary section of the email, suggesting they might still be Laura Ashley dresses.
