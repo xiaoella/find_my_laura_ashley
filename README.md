@@ -120,9 +120,14 @@ Sample Email when there are no listings after fetching and filtering:
 The model's accuracy and performance could be further improved. There are several ways to achieve this with various difficulties, the most straightforward way could be simply increase the size of the dataset for training the model, other more complex ways could utilise feature engineering, or ultimately using pre-trained resources such as a deep learning model could further improve the accuracy in identifying the laura ashley logo.
 
 ### 2. Deployment and Automation
-This application can be easily scheduled either using AWS Lambda in conjunction with CloudWatch Events to automate the weekly execution. However it is worth mentioning that large sized python dependencies (such as sklearn and skimage) will exceed the lambda function size limitation, and a container such as Docker could be a solution for working with AWS Lambda, which will also be able to ensure consistent environments.
+This application can be scheduled using AWS Lambda in conjunction with CloudWatch Events to automate weekly execution. It is worth mentioning that large sized python dependencies (such as sklearn and skimage which are required in this project) will exceed AWS Lambda size limitation, but containerising using e.g. Docker could be a solution for working with AWS Lambda, which also will be able to ensure consistent environments.
 
 Alternatively, it seems like an AWS EC2 instance could be used to automate the script using a cron job.
+<img src="src/images/aws_ec2.png" alt="AWS EC2 Successful Launch" width="400"/>
+<sup>You'll also get to see this cute dove when launching an AWS EC2 instance! 🕊️</sup>
+
+<img src="src/images/crontab.png" alt="Cron Job Preview" width="400"/>
+<sup>I have set my job to run every week on a Saturday morning - a great way to wake up to the weekend</sup>
 
 ### 3. Further Application and Exploration of Other Marketplaces
 The project principle can be extended to analyse other listing items when a classification problem presents, such as footware brands / model, jewellery type / brand etc. The model can be adapted and trained using appropriate dataset collected for the new classification task, and potentially fine tuned and engineered as needed for the new domain.
