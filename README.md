@@ -126,7 +126,7 @@ Alternatively, it seems like an AWS EC2 instance could be used to automate the s
 <img src="src/images/aws_ec2.png" alt="AWS EC2 Successful Launch" width="400"/><br>
 <sup>You'll also get to see this cute dove when launching an AWS EC2 instance! 🕊️</sup>
 
-<img src="src/images/crontab.png" alt="Cron Job Preview" width="400"/><br>
+<img src="src/images/crontab.png" alt="Cron Job Preview" width="600"/><br>
 I have set my job to run every week on a Saturday morning - which is a great way to wake up to the weekend!
 
 ### 3. Further Application and Exploration of Other Marketplaces
