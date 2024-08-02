@@ -135,7 +135,7 @@ Alternatively, it seems like an AWS EC2 instance could be used to automate the s
 <p align="center">
 <img src="src/images/crontab.png" alt="Cron Job Preview" width="500"/><br>
 </p>
-I have set my job to run every week on a Saturday morning - which is a great way to wake up to the weekend!
+I have set my job to run on every Saturday morning - which is always a lovely surprise to wake up to at the weekend!
 
 ### 3. Further Application and Exploration of Other Marketplaces
 The project principle can be extended to analyse other listing items when a classification problem presents, such as footware brands / model, jewellery type / brand etc. The model can be adapted and trained using appropriate dataset collected for the new classification task, and potentially fine tuned and engineered as needed for the new domain.
