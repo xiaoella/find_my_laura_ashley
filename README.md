@@ -110,10 +110,14 @@ Note: run the script after data has been fetched and saved, and predictions have
 |---------------------------------------------|---------------------------------------------|
 
 Sample Email when there is only one section related to the predictions:
+<p align="center">
 <img src="src/images/one_listing.png" alt="Email example" width="400"/>
+</p>
 
+<p align="center">
 Sample Email when there are no listings after fetching and filtering:
-<img src="src/images/no_listing.png" alt="Email example" width="400"/>
+<img src="src/images/no_listing.png" alt="Email example" width="300"/>
+</p>
 
 ## Further Recommendations / Improvements
 ### 1. Model Optimization and Validation
