@@ -123,10 +123,14 @@ The model's accuracy and performance could be further improved. There are severa
 This application can be scheduled using AWS Lambda in conjunction with CloudWatch Events to automate weekly execution. It is worth mentioning that large sized python dependencies (such as sklearn and skimage which are required in this project) will exceed AWS Lambda size limitation, but containerising using e.g. Docker could be a solution for working with AWS Lambda, which also will be able to ensure consistent environments.
 
 Alternatively, it seems like an AWS EC2 instance could be used to automate the script using a cron job.
-<img src="src/images/aws_ec2.png" alt="AWS EC2 Successful Launch" width="400"/><br>
+<p align="center">
+  <img src="src/images/aws_ec2.png" alt="AWS EC2 Successful Launch" width="500"/><br>
+</p>
 <sup>You'll also get to see this cute dove when launching an AWS EC2 instance! 🕊️</sup>
 
-<img src="src/images/crontab.png" alt="Cron Job Preview" width="600"/><br>
+<p align="center">
+<img src="src/images/crontab.png" alt="Cron Job Preview" width="500"/><br>
+</p>
 I have set my job to run every week on a Saturday morning - which is a great way to wake up to the weekend!
 
 ### 3. Further Application and Exploration of Other Marketplaces
