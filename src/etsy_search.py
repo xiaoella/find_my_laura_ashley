@@ -1,5 +1,6 @@
 """
-Class object to search, fetch and filter data from Etsy's website using API
+Class object to search, fetch, filter and save data from Etsy's website using API.
+Also include a function for directory management.
 """
 
 import os

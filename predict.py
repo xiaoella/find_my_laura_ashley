@@ -1,5 +1,6 @@
 """
 This script follows the get_data.py, and runs the prediction model on the retrieved Etsy data.
+The model used is trained as per the notebook, and imported as a pickle file. 
 """
 
 import os
@@ -41,6 +42,7 @@ def predict_listing(listing_folder, model):
 def main():
     # Load the classification model
     src_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "src"))
+    # Initialise the model from pkl file as per the notebook
     with open(f"{src_dir}/logo_identifier.pkl", "rb") as file:
         model = pickle.load(file)
 

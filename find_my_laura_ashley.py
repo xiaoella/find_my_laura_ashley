@@ -1,5 +1,5 @@
 """
-This script combines the 3 scripts into one, it is designed to be scheduled and run automatically using a cron job.
+This script combines the 3 scripts into one, it is designed to be scheduled and run automatically using a cron job or similar.
 """
 
 import get_data
