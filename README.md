@@ -114,8 +114,8 @@ Sample Email when there is only one section related to the predictions:
 <img src="src/images/one_listing.png" alt="Email example" width="400"/>
 </p>
 
-<p align="center">
 Sample Email when there are no listings after fetching and filtering:
+<p align="center">
 <img src="src/images/no_listing.png" alt="Email example" width="300"/>
 </p>
 
@@ -129,8 +129,8 @@ This application can be scheduled using AWS Lambda in conjunction with CloudWatc
 Alternatively, it seems like an AWS EC2 instance could be used to automate the script using a cron job.
 <p align="center">
   <img src="src/images/aws_ec2.png" alt="AWS EC2 Successful Launch" width="500"/><br>
-</p>
 <sup>You'll also get to see this cute dove when launching an AWS EC2 instance! 🕊️</sup>
+</p>
 
 <p align="center">
 <img src="src/images/crontab.png" alt="Cron Job Preview" width="500"/><br>
