@@ -6,9 +6,10 @@ import get_data
 import predict 
 import send_email
 import shutil
+from dotenv import load_dotenv
 
 def main():
-    
+    load_dotenv()
     get_data.main()
     predict.main()
     send_email.main()
