@@ -52,7 +52,7 @@ def main():
         "bomb_words": [
             "uk 12", "12 uk", "uk 14", "14 uk", "uk 16", "16 uk",
             "us 10", "10 us", " m ", " l ",
-            "laura ashley style", "handmade"
+            "laura ashley style", "handmade", "like laura ashley"
         ]
     }
 
