@@ -5,7 +5,7 @@ I have been collecting Laura Ashley dresses for a few years, especially the vint
 
 Finding a Laura Ashley dress that also fits perfectly is not easy. Since the brand stopped making these dresses after the 80s, and had gone out of business in 2020, these dresses are only available through second-hand sellers on platforms, like Etsy. The search is then further complicated by vintage sizing discrepancies: a 1980s Laura Ashley dress labelled as a 'UK 10' might fit a modern UK 8. Moreover, the brand's popularity leads some sellers to label other non-Laura-Ashley floral dresses as _'Laura Ashley style'_ or _'like Laura Ashley'_, adding another layer of complexity to the search.
 
-This project aims to identify the perfect Laura Ashley dress, by fetching data from Etsy's website via API, and filtering the downloaded .json file results based on the listings' descriptions, such as size and measurements. After the filtering process, a Random Forest classifier model is trained and used to detect if any images of the listings contain a tag showing the pre-2000s Laura Ashley logo. As a final step, an emailing script was designed to wrap up all the findings in a neat email, containing both predicted 'True' and 'False' results, to avoid missing out on a genuine dress.
+This project aims to identify the perfect Laura Ashley dress, by fetching data from Etsy's website via API, and filtering the downloaded json file results based on the listings' descriptions, such as size and measurements. After the filtering process, a Random Forest classifier model is trained and used to detect if any images of the listings contain a tag showing the pre-2000s Laura Ashley logo. As a final step, an emailing script was designed to wrap up all the findings in a neat email, containing both predicted 'True' and 'False' results, to avoid missing out on a genuine dress.
 
 <img src="src/images/80s_laura_ashley_tag.png" alt="logos" width="500"/>
 1980s Vintage Laura Ashley Tags<br/>
@@ -42,7 +42,7 @@ python get_data.py
 - Level 1 Filtering: Filters listings based on title keywords, and creation timestamp. This script is designed to run once a week, so I only aim to fetch the listings that were created and posted within the last week.
 - Level 2 Filtering: Further filters the listings based on specific property values like whether it is a clothing, and its listed size.
 
-**Saving Data and Directory Management:** Saves the filtered listings along with their properties and associated images as .json files, and automatically creates directories based on the current date in order to organise the saved data.
+**Saving Data and Directory Management:** Saves the filtered listings along with their properties and associated images as json files, and automatically creates directories based on the current date in order to organise the saved data.
 
 **Sample output:**
 ```
