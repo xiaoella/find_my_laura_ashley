@@ -13,7 +13,7 @@ from skimage.transform import resize
 
 
 # Function to process image into array matching the size for the trained model
-def process_img(img_path, target_size=(256, 256)):
+def img_to_array(img_path, target_size=(256, 256)) -> np.array: 
     try:
         image = Image.open(img_path)
         img_array = np.array(image)
@@ -27,17 +27,18 @@ def process_img(img_path, target_size=(256, 256)):
 
 # Function to use the model and make predictions to listing images within a listing folder
 # And return "True" if any of the images in that folder has been predicted as a logo, else "False"
-def predict_listing(listing_folder, model):
+def predict_listing(listing_folder, model) -> bool:
     predictions = []
     for img in os.listdir(listing_folder):
         if img.endswith("jpg"): # All images saved from previous step are .jpg files
             img_path = os.path.join(listing_folder, img)
-            img_array = process_img(img_path)
+            img_array = img_to_array(img_path)
             predictions.append(model.predict(img_array))
     if any(predictions):
         return True
     else:
         return False
+
 
 def main():
     # Load the classification model
@@ -50,21 +51,15 @@ def main():
     date = datetime.now().strftime("%y%m%d")
     root_dir = f"etsy_data/{date}"
 
-
     # Create a dictionary for saving the predictions
-    predictions = {
-        "listing_id": [],
-        "prediction": []
-    }
+    predictions = {"listing_id": [], "prediction": []}
 
     # Make predictions and append to dictionary
     for folder in os.listdir(f"{root_dir}/images"):
-        if folder.isdigit():
-            # then it is a listing folder
+        if folder.isdigit(): # then it is a listing folder
             listing_folder = os.path.join(root_dir, "images", folder)
             predictions["listing_id"].append(int(folder))
             predictions["prediction"].append(predict_listing(listing_folder, model))
-
 
     # Make results into a dataframe, and load other properties of listings from json
     results = pd.DataFrame(predictions)

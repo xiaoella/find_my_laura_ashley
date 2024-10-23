@@ -9,19 +9,15 @@ import json
 from typing import List, Dict, Any
 
 
-# Function to create a directory
-def make_directory(path):
-    try:
-        os.makedirs(path, exist_ok=True)
-    except Exception as e:
-        print(f"An error occurred: {e}")
+# Function to create a directory if it doesn't exist
+def make_directory(path: str) -> str:
+    os.makedirs(path, exist_ok=True)
     return path
 
 
 class EtsySearch:
     def __init__(self):
         self.api_key = os.environ.get("ETSY_API_KEY")
-
 
     def get_listings(self, keywords: str, offset: int) -> Dict[str, Any]:
     # This uses Etsy's Open API V3 [findAllListingsActive] endpoint
@@ -44,7 +40,6 @@ class EtsySearch:
             print(f"An error occurred: {e}")
             return {}
 
-
     def get_listing_properties(self, shop_id: int, listing_id: int) -> Dict[str, Any]:
     # This uses Etsy's Open API V3 [getListingProperties] endpoint
     # https://developers.etsy.com/documentation/reference/#operation/getListingProperties
@@ -57,7 +52,6 @@ class EtsySearch:
         except Exception as e:
             print(f"An error occurred: {e}")
             return {}
-
 
     def fetch_images(self, listing_id: int) -> Dict:
     # This uses Etsy's Open API V3 [getListingImages] endpoint
@@ -72,8 +66,7 @@ class EtsySearch:
             print(f"An error occurred: {e}")
             return {}
 
-
-    def check_contain_keywords(self, must_have_word: List[str], keywords: List[str],
+    def check_keywords(self, must_have_word: List[str], keywords: List[str],
                                 bomb_words: List[str], title: str, description: str) -> bool:
         description = description.lower()
         title = title.lower()
@@ -84,7 +77,6 @@ class EtsySearch:
             return True
         else:
             return False
-
 
     def save_to_json(self, listings: Dict[str, Any], filepath: str) -> str:
         dirname = "/".join(filepath.split("/")[:-1])
