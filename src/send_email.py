@@ -4,7 +4,7 @@ This script sends an email reporting the fetched and predicted listings.
 
 import pandas as pd
 from datetime import datetime
-from src.emailer import Emailer
+from src.classes.emailer import Emailer
 
 def main():
     # Getting today's date

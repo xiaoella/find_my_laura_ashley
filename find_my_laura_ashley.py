@@ -2,9 +2,7 @@
 This script combines the 3 scripts into one, it is designed to be scheduled and run automatically using a cron job or similar.
 """
 
-import get_data
-import predict 
-import send_email
+from src import get_data, predict, send_email
 import shutil
 from dotenv import load_dotenv
 

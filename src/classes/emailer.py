@@ -18,7 +18,7 @@ class Emailer:
         df_true = df[df["prediction"] == True]
         df_false = df[df["prediction"] == False]
 
-        src_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src"))
+        src_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
         with open(f"{src_dir}/email_content.html", "r") as file:
             html_content = file.read()
         

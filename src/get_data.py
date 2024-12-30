@@ -6,7 +6,7 @@ import os
 import json
 import urllib.request 
 from datetime import datetime, timedelta
-from src.etsy_search import EtsySearch, make_directory
+from src.classes.etsy_search import EtsySearch, make_directory
 
 
 # Main function to run the script
@@ -39,7 +39,7 @@ def main():
     #----- Level 1 Filtering: by the time created and listing description -----
     keyword = {
         "must_have_words": ["laura ashley"],
-        "keywords": [
+        "keywords": [   
             "laura ashley", "vintage dress", "uk 8", "uk 10", "size xs", "size s", "vintage 10",
             "waist", "13 inches", "13\"", "26 inches", "26\"", "pit to pit", "17 inches", "17\"", "cotton"
         ],
